@@ -1,1 +1,54 @@
-
+{
+  "schema_version": "2",
+  "source_info": {
+    "name": "qnap8528 驱动源",
+    "author": "ike",
+    "homepage": "https://github.com/iamiao/8528",
+    "description": "自动跟随 iamiao/8528 上游 Release 的 FnDepot 外部源。"
+  },
+  "apps": {
+    "qnap8528-kmod": {
+      "display_name": "qnap8528 驱动",
+      "desc": "QNAP IT8528 EC 内核驱动，支持风扇控制、温度传感器、LED、按键与 VPD 读取。",
+      "platform": [
+        "x86"
+      ],
+      "categories": [
+        "硬件驱动"
+      ],
+      "run_as": "root",
+      "install_type": "",
+      "is_docker": false,
+      "service_port": "",
+      "maintainer": "iamiao",
+      "maintainer_url": "https://github.com/iamiao/8528",
+      "bug_report_url": "https://github.com/iamiao/8528/issues",
+      "readme_url": "https://github.com/iamiao/8528/blob/master/README.md",
+      "icon_url": "https://cdn.jsdelivr.net/gh/iamiao/8528@master/fnos/ICON_256.PNG",
+      "releases": {
+        "1.24.2": {
+          "changelog": "qnap8528 驱动 1.24.2",
+          "packages": {
+            "x86": {
+              "download_url": "https://github.com/iamiao/8528/releases/download/%E9%A3%9E%E7%89%9Bqnap8528/qnap8528-kmod_1.24.2_x86.fpk",
+              "sha256": "b905bc804c8e9e2ecfbb7d0dbfd18dc395c755675eab7c3852636d8d5bc0dfda",
+              "size": 33201
+            }
+          },
+          "updated_at": "2026-09-07T06:07:45+00:00"
+        },
+        "1.24.3": {
+          "changelog": "qnap8528 驱动 1.24.3",
+          "packages": {
+            "x86": {
+              "download_url": "https://github.com/iamiao/8528/releases/download/%E9%A3%9E%E7%89%9Bqnap8528/qnap8528-kmod_1.24.3_x86.fpk",
+              "sha256": "e34a6b153fbf1bdca2a73834447343d3c62a092a7ea376682e1d415e2562a12f",
+              "size": 33457
+            }
+          },
+          "updated_at": "2026-09-07T06:07:45+00:00"
+        }
+      }
+    }
+  }
+}
