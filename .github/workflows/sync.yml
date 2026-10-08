@@ -1,0 +1,41 @@
+name: Sync FnDepot source
+
+on:
+  schedule:
+    # 每天北京时间 11:17（03:17 UTC）检查上游是否有新版本
+    - cron: "17 3 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-fnpack
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Regenerate fnpack.json
+        run: python scripts/gen_fnpack.py
+
+      - name: Commit if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- fnpack.json; then
+            echo "fnpack.json 无变化，跳过提交"
+            exit 0
+          fi
+          git add fnpack.json
+          git commit -m "chore: sync fnpack.json from upstream $(date -u +%Y-%m-%d)"
+          git push
